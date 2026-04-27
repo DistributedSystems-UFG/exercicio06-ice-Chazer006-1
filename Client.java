@@ -9,17 +9,19 @@ public class Client {
             Demo.PrinterPrx printer = Demo.PrinterPrx.checkedCast(base);
 
             if (printer == null) {
-                throw new Error("Proxy inválido");
+                throw new Error("Proxy inválido!");
             }
 
             String response = printer.printString("Hello from Goiania!");
-            System.out.println("Resposta do Servidor: " + response);
+            System.out.println("Servidor respondeu: " + response);
 
-            int sum = printer.add(15, 27);
-            System.out.println("Resultado da soma remota (15+27): " + sum);
+            int val1 = 10;
+            int val2 = 25;
+            int result = printer.add(val1, val2);
+            System.out.println("Resultado da soma remota (" + val1 + " + " + val2 + "): " + result);
 
             String time = printer.getServerTime();
-            System.out.println("Hora atual no servidor: " + time);
+            System.out.println("Horário atual no servidor: " + time);
 
         } catch (LocalException e) {
             e.printStackTrace();
